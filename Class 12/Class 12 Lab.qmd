@@ -1,0 +1,222 @@
+---
+title: "Class 12 Lab"
+format: pdf
+author: "Nickolas Beam"
+---
+
+In today's class we will work with published RNA-Seq  experiment where airway smooth muscle cells (ASMs) were treated with dexamethasone, a synthetic glucocorticoid steroid with anti-inflammatory effects (Himes et al. 2014).
+
+## Data iport
+
+We will use good old `read.csv()` to read the two things we need for this analysis:
+- count data
+- col data (meta)
+
+```{r}
+counts <- read.csv("airway_scaledcounts.csv", row.names=1)
+metadata <- read.csv("airway_metadata.csv")
+```
+
+> Q1. How many genes are in this dataset?
+
+```{r}
+nrow(counts)
+```
+
+```{r}
+head(counts)
+```
+
+First we should check the correspondence of the metadata and count data
+
+
+```{r}
+metadata$id
+```
+
+```{r}
+colnames(counts)
+```
+
+To check that these are all in the same order we can use `==` test of equality.
+
+```{r}
+all(metadata$id == colnames(counts))
+```
+
+```{r}
+all(c(T,T,T,T,T,T))
+```
+
+## Analysis via comparisoon of CONTROL vs TREATED
+
+The treated have the dex drug and the control do not.
+First I need to be able to extract just the "contol" columns in the `counts` data set.
+
+```{r}
+control.inds <- metadata$dex == "control"
+control <- metadata[control.inds,]
+```
+
+Now I can use this to access just the "control" columns in the `counts` data...
+
+```{r}
+control.counts <- counts[,control$id]
+head(control.counts)
+```
+
+Find the mean count value for each transcript/gene by binding the `rowmeans()`.
+
+```{r}
+control.mean <- rowMeans(control.counts)
+head(control.mean)
+```
+
+And noow find a mean value for all the "treated" columns in the same way
+
+```{r}
+treated.id <- metadata[metadata$dex == "treated","id"]
+treated.mean <- rowMeans(counts[,treated.id])
+
+```
+
+Now I hae `control.mean` and `treated.mean`. Lets put them together for safe keeping and ease of use later.
+
+```{r}
+meancounts <- data.frame(control.mean,treated.mean)
+head(meancounts)
+```
+
+Let's do a quick plot to see how our data looks
+
+```{r}
+plot(meancounts)
+```
+
+This is very heavily skewed and over a wide range - calling out for a log transform!
+
+```{r}
+plot(meancounts, log="xy")
+```
+
+We like working with log transformed dat aas it can help make things more straightforward to interpret.
+
+
+What if we had a doubling
+```{r}
+log2(40/20)
+```
+
+We like working with log2 fold-change values. Let's calculate them for our data.
+
+```{r}
+meancounts$log2fc <- log2(meancounts$treated.mean/meancounts$control.mean)
+```
+
+We want filter out any genes (that is the rows) where we have ZERO count data.
+
+```{r}
+to.keep.inds <- rowSums(meancounts[,1:2] == 0) == 0
+```
+
+
+
+
+```{r}
+mycounts <- meancounts[to.keep.inds,]
+nrow(mycounts)
+```
+
+A common threshold for calling genes as differentially expressed is a log2 fold-change of +2 or -2
+
+```{r}
+sum(mycounts$log2fc >= +2)
+```
+What percent is this?
+
+```{r}
+round((sum(mycounts$log2fc >= +2) / nrow(mycounts)) * 100,2)
+```
+
+and down regulated:
+
+```{r}
+round((sum(mycounts$log2fc <= -2)/nrow(mycounts)) *100,2)
+```
+
+We need some stats to check if the drug induced difference is significant!
+
+# Turn to DESeq2
+
+Let's turn to doiing this the correctt way with the DESeq2 package.
+
+
+```{r, message=FALSE, warning=FALSE}
+library(DESeq2)
+```
+
+The main function in the DESeq2 package is called `deseq()`. It wantts oour count data and oour colData (metadata) as input in a specific way.
+
+```{r}
+dds <- DESeqDataSetFromMatrix(countData = counts,
+                              colData = metadata,
+                              design = ~dex)
+```
+```{r}
+dds <- DESeq(dds)
+results(dds)
+```
+
+
+Now what we have got so far is the log2 fold-change and the adj p-value for the significance.
+
+```{r}
+res <- results(dds)
+
+head(res)
+```
+
+A first plot
+
+```{r}
+plot(res$log2FoldChange, res$padj)
+```
+
+```{r}
+plot(res$log2FoldChange, log(res$padj))
+```
+
+```{r}
+log(0.05)
+```
+
+We can flip the y-axis so thte plot does not look upside down.
+
+```{r}
+plot(res$log2FoldChange, -log(res$padj))
+abline(v=c(-2,+2), col="red")
+abline(h=-log(0.05), col="red")
+```
+
+```{r}
+mycols <- rep("gray", nrow(res))
+mycols[ abs(res$log2FoldChange) > 2 ]  <- "red" 
+
+inds <- (res$padj < 0.01) & (abs(res$log2FoldChange) > 2 )
+mycols[ inds ] <- "blue"
+
+# Volcano plot with custom colors 
+plot( res$log2FoldChange,  -log(res$padj), 
+ col=mycols, ylab="-Log(P-value)", xlab="Log2(FoldChange)" )
+
+# Cut-off lines
+abline(v=c(-2,2), col="gray", lty=2)
+abline(h=-log(0.1), col="gray", lty=2)
+```
+
+
+
+
+
+
+

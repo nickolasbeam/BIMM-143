@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Nickolas Beam">
+
+<title>Class08 Lab</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="class06 lab_files/libs/clipboard/clipboard.min.js"></script>
+<script src="class06 lab_files/libs/quarto-html/quarto.js"></script>
+<script src="class06 lab_files/libs/quarto-html/popper.min.js"></script>
+<script src="class06 lab_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="class06 lab_files/libs/quarto-html/anchor.min.js"></script>
+<link href="class06 lab_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="class06 lab_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="class06 lab_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="class06 lab_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="class06 lab_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Class08 Lab</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Nickolas Beam </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fna.data <span class="ot">&lt;-</span> <span class="st">"WisconsinCancer.csv"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>wisc.df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(fna.data, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#wisc.df</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will here remove the first column (the expert diagnosis) as we will no tuse this oin our analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We can use -1 here to remove the first column.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>wisc.data <span class="ot">&lt;-</span> wisc.df[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>diagnosis <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(wisc.df[,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>Q1 How many observations are in this dataset?</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(wisc.data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 569</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q2 How many of the observations have a malignant diagnosis?</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(wisc.df<span class="sc">$</span>diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  B   M 
+357 212 </code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q3 How many variables/features in the data are suffixed with _mean?</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(wisc.data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "radius_mean"             "texture_mean"           
+ [3] "perimeter_mean"          "area_mean"              
+ [5] "smoothness_mean"         "compactness_mean"       
+ [7] "concavity_mean"          "concave.points_mean"    
+ [9] "symmetry_mean"           "fractal_dimension_mean" 
+[11] "radius_se"               "texture_se"             
+[13] "perimeter_se"            "area_se"                
+[15] "smoothness_se"           "compactness_se"         
+[17] "concavity_se"            "concave.points_se"      
+[19] "symmetry_se"             "fractal_dimension_se"   
+[21] "radius_worst"            "texture_worst"          
+[23] "perimeter_worst"         "area_worst"             
+[25] "smoothness_worst"        "compactness_worst"      
+[27] "concavity_worst"         "concave.points_worst"   
+[29] "symmetry_worst"          "fractal_dimension_worst"</code></pre>
+</div>
+</div>
+<p>Use grep() to search for</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>matches <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">"_mean"</span>, <span class="fu">colnames</span>(wisc.df))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(matches)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<section id="principal-component-analysis" class="level1">
+<h1>Principal component analysis</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(wisc.data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            radius_mean            texture_mean          perimeter_mean 
+           1.412729e+01            1.928965e+01            9.196903e+01 
+              area_mean         smoothness_mean        compactness_mean 
+           6.548891e+02            9.636028e-02            1.043410e-01 
+         concavity_mean     concave.points_mean           symmetry_mean 
+           8.879932e-02            4.891915e-02            1.811619e-01 
+ fractal_dimension_mean               radius_se              texture_se 
+           6.279761e-02            4.051721e-01            1.216853e+00 
+           perimeter_se                 area_se           smoothness_se 
+           2.866059e+00            4.033708e+01            7.040979e-03 
+         compactness_se            concavity_se       concave.points_se 
+           2.547814e-02            3.189372e-02            1.179614e-02 
+            symmetry_se    fractal_dimension_se            radius_worst 
+           2.054230e-02            3.794904e-03            1.626919e+01 
+          texture_worst         perimeter_worst              area_worst 
+           2.567722e+01            1.072612e+02            8.805831e+02 
+       smoothness_worst       compactness_worst         concavity_worst 
+           1.323686e-01            2.542650e-01            2.721885e-01 
+   concave.points_worst          symmetry_worst fractal_dimension_worst 
+           1.146062e-01            2.900756e-01            8.394582e-02 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(wisc.data,<span class="dv">2</span>,sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            radius_mean            texture_mean          perimeter_mean 
+           3.524049e+00            4.301036e+00            2.429898e+01 
+              area_mean         smoothness_mean        compactness_mean 
+           3.519141e+02            1.406413e-02            5.281276e-02 
+         concavity_mean     concave.points_mean           symmetry_mean 
+           7.971981e-02            3.880284e-02            2.741428e-02 
+ fractal_dimension_mean               radius_se              texture_se 
+           7.060363e-03            2.773127e-01            5.516484e-01 
+           perimeter_se                 area_se           smoothness_se 
+           2.021855e+00            4.549101e+01            3.002518e-03 
+         compactness_se            concavity_se       concave.points_se 
+           1.790818e-02            3.018606e-02            6.170285e-03 
+            symmetry_se    fractal_dimension_se            radius_worst 
+           8.266372e-03            2.646071e-03            4.833242e+00 
+          texture_worst         perimeter_worst              area_worst 
+           6.146258e+00            3.360254e+01            5.693570e+02 
+       smoothness_worst       compactness_worst         concavity_worst 
+           2.283243e-02            1.573365e-01            2.086243e-01 
+   concave.points_worst          symmetry_worst fractal_dimension_worst 
+           6.573234e-02            6.186747e-02            1.806127e-02 </code></pre>
+</div>
+</div>
+<p>We need to scale with ‘scale=TRUE’ argument with prcomp()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>wisc.pr <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(wisc.data, <span class="at">scale =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wisc.pr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Importance of components:
+                          PC1    PC2     PC3     PC4     PC5     PC6     PC7
+Standard deviation     3.6444 2.3857 1.67867 1.40735 1.28403 1.09880 0.82172
+Proportion of Variance 0.4427 0.1897 0.09393 0.06602 0.05496 0.04025 0.02251
+Cumulative Proportion  0.4427 0.6324 0.72636 0.79239 0.84734 0.88759 0.91010
+                           PC8    PC9    PC10   PC11    PC12    PC13    PC14
+Standard deviation     0.69037 0.6457 0.59219 0.5421 0.51104 0.49128 0.39624
+Proportion of Variance 0.01589 0.0139 0.01169 0.0098 0.00871 0.00805 0.00523
+Cumulative Proportion  0.92598 0.9399 0.95157 0.9614 0.97007 0.97812 0.98335
+                          PC15    PC16    PC17    PC18    PC19    PC20   PC21
+Standard deviation     0.30681 0.28260 0.24372 0.22939 0.22244 0.17652 0.1731
+Proportion of Variance 0.00314 0.00266 0.00198 0.00175 0.00165 0.00104 0.0010
+Cumulative Proportion  0.98649 0.98915 0.99113 0.99288 0.99453 0.99557 0.9966
+                          PC22    PC23   PC24    PC25    PC26    PC27    PC28
+Standard deviation     0.16565 0.15602 0.1344 0.12442 0.09043 0.08307 0.03987
+Proportion of Variance 0.00091 0.00081 0.0006 0.00052 0.00027 0.00023 0.00005
+Cumulative Proportion  0.99749 0.99830 0.9989 0.99942 0.99969 0.99992 0.99997
+                          PC29    PC30
+Standard deviation     0.02736 0.01153
+Proportion of Variance 0.00002 0.00000
+Cumulative Proportion  1.00000 1.00000</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wisc.pr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="class06-lab_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Let’s make a PC plot (a.k.a “score plot” or “PC1 vs PC2” etc. plot)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wisc.pr<span class="sc">$</span>x[,<span class="dv">1</span>], wisc.pr<span class="sc">$</span>x[,<span class="dv">2</span>], <span class="at">col =</span> diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="class06-lab_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">summary</span>(wisc.pr)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$names
+[1] "sdev"       "rotation"   "center"     "scale"      "x"         
+[6] "importance"
+
+$class
+[1] "summary.prcomp"</code></pre>
+</div>
+</div>
+<p>How many PCs do I need to capture 80% of the original variance in my dataset?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(y<span class="sc">$</span>importance[<span class="dv">3</span>,] <span class="sc">&lt;=</span> <span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(wisc.pr<span class="sc">$</span>x)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>diagnosis <span class="ot">&lt;-</span> diagnosis</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df) <span class="sc">+</span> <span class="fu">aes</span>(PC1, PC2, <span class="at">col=</span>diagnosis) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="class06-lab_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pr.var <span class="ot">&lt;-</span> wisc.pr<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pr.var)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13.281608  5.691355  2.817949  1.980640  1.648731  1.207357</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pve <span class="ot">&lt;-</span> pr.var<span class="sc">/</span><span class="fu">sum</span>(pr.var)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pve, <span class="at">xlab =</span> <span class="st">"Principal Component"</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Proportion of Variance Explained"</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">type =</span> <span class="st">"o"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="class06-lab_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(pve, <span class="at">ylab =</span> <span class="st">"Percent of Variance Explained"</span>,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg=</span><span class="fu">paste0</span>(<span class="st">"PC"</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(pve)), <span class="at">las=</span><span class="dv">2</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at=</span>pve, <span class="at">labels=</span><span class="fu">round</span>(pve,<span class="dv">2</span>)<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="class06-lab_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="combine-pca-with-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="combine-pca-with-clustering">Combine PCA with clustering</h2>
+<p>I want to cluster in “PC space”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wisc.pr<span class="sc">$</span>x[,<span class="dv">1</span>],wisc.pr<span class="sc">$</span>x[,<span class="dv">2</span>], <span class="at">col=</span>diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="class06-lab_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wisc.pr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Importance of components:
+                          PC1    PC2     PC3     PC4     PC5     PC6     PC7
+Standard deviation     3.6444 2.3857 1.67867 1.40735 1.28403 1.09880 0.82172
+Proportion of Variance 0.4427 0.1897 0.09393 0.06602 0.05496 0.04025 0.02251
+Cumulative Proportion  0.4427 0.6324 0.72636 0.79239 0.84734 0.88759 0.91010
+                           PC8    PC9    PC10   PC11    PC12    PC13    PC14
+Standard deviation     0.69037 0.6457 0.59219 0.5421 0.51104 0.49128 0.39624
+Proportion of Variance 0.01589 0.0139 0.01169 0.0098 0.00871 0.00805 0.00523
+Cumulative Proportion  0.92598 0.9399 0.95157 0.9614 0.97007 0.97812 0.98335
+                          PC15    PC16    PC17    PC18    PC19    PC20   PC21
+Standard deviation     0.30681 0.28260 0.24372 0.22939 0.22244 0.17652 0.1731
+Proportion of Variance 0.00314 0.00266 0.00198 0.00175 0.00165 0.00104 0.0010
+Cumulative Proportion  0.98649 0.98915 0.99113 0.99288 0.99453 0.99557 0.9966
+                          PC22    PC23   PC24    PC25    PC26    PC27    PC28
+Standard deviation     0.16565 0.15602 0.1344 0.12442 0.09043 0.08307 0.03987
+Proportion of Variance 0.00091 0.00081 0.0006 0.00052 0.00027 0.00023 0.00005
+Cumulative Proportion  0.99749 0.99830 0.9989 0.99942 0.99969 0.99992 0.99997
+                          PC29    PC30
+Standard deviation     0.02736 0.01153
+Proportion of Variance 0.00002 0.00000
+Cumulative Proportion  1.00000 1.00000</code></pre>
+</div>
+</div>
+<p>The <code>hclust()</code> function wants a distance matrix as input…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dist</span>(wisc.pr<span class="sc">$</span>x[,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>wisc.pr.hclust <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">"ward.D2"</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wisc.pr.hclust)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="class06-lab_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Find my cluster membership vector with the <code>cutree()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>grps <span class="ot">&lt;-</span> <span class="fu">cutree</span>(wisc.pr.hclust, <span class="at">k=</span><span class="dv">2</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(grps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>grps
+  1   2 
+203 366 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(diagnosis,grps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         grps
+diagnosis   1   2
+        B  24 333
+        M 179  33</code></pre>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
